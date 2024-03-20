@@ -38,8 +38,11 @@ public class WanderingAI : MonoBehaviour
 
             // // move zambie towards player
             // transform.Translate(0, 0, speed * Time.deltaTime);
-        }
+
+            // replaced the above with a navmesh lol.
             agent.destination = player.position;
+
+        }
 
     }
 
