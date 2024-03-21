@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class ReactiveTarget : MonoBehaviour
 {
-
-    public void ReactToHit() {
+    public enum HitDirection {
+        Forward,
+        Backward
+    }
+    private Animator animator;
+    void Start() {
+        animator = GetComponent<Animator>();
+    }
+    public void ReactToHit(HitDirection hitDirection) {
 
         // Disable the NavMeshAgent component
         UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -18,12 +25,21 @@ public class ReactiveTarget : MonoBehaviour
         if (behavior != null) {
             behavior.SetAlive(false);
         }   
-        StartCoroutine(Die());
+        StartCoroutine(Die(hitDirection));
     }
 
-    public IEnumerator Die() {
+    public IEnumerator Die(HitDirection hitDirection) {
 
-        this.transform.Rotate(-75, 0, 0);
+        if (hitDirection == HitDirection.Forward)
+        {
+            animator.SetTrigger("Z_FallingForward");
+        }
+        else if (hitDirection == HitDirection.Backward)
+        {
+            animator.SetTrigger("Z_FallingBack");
+        }
+
+        // this.transform.Rotate(-75, 0, 0);
 
         yield return new WaitForSeconds(1.5f);
 

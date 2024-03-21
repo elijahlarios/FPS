@@ -7,8 +7,8 @@ public class WanderingAI : MonoBehaviour
 
 
     public float speed = 1.0f;
-    public float detectionRange = 3.0f; // Range within which the enemy detects the player
-
+    public float audioDetectionRange = 3.0f; // Range within which the enemy detects the player
+    public float detectionRange = 5.0f;
     public AudioClip[] audioClips;
 
     private bool isAlive;
@@ -16,6 +16,8 @@ public class WanderingAI : MonoBehaviour
     private Transform player; 
     private UnityEngine.AI.NavMeshAgent agent;
     private AudioSource audioSource;
+    private Animator animator;
+
 
 
     // Start is called before the first frame update
@@ -26,6 +28,8 @@ public class WanderingAI : MonoBehaviour
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.destination = player.position;
         audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
+
     }
 
     void Update()
@@ -34,12 +38,19 @@ public class WanderingAI : MonoBehaviour
 
         if (isAlive) {
             if (distanceToPlayer <= detectionRange) {
+                animator.SetTrigger("Z_Attack");
+            } else {
+                animator.SetTrigger("Z_Run");
+            }
+            if (distanceToPlayer <= audioDetectionRange) {
                 if (!audioSource.isPlaying && audioClips.Length > 0)
                 {
                     int randomIndex = Random.Range(0, audioClips.Length);
                     audioSource.clip = audioClips[randomIndex];
                     audioSource.Play();
                 }
+            } else if (audioSource.isPlaying) {
+                audioSource.Pause();
             }
 
             agent.destination = player.position;

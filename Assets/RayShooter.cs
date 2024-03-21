@@ -37,7 +37,10 @@ public class RayShooter : MonoBehaviour
                 ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
             
                 if (target != null) {
-                    target.ReactToHit();
+                    Vector3 hitDirection = transform.position - hitObject.transform.position;
+                    ReactiveTarget.HitDirection direction = Vector3.Dot(hitDirection, transform.forward) > 0 ? ReactiveTarget.HitDirection.Forward : ReactiveTarget.HitDirection.Backward;
+                    target.ReactToHit(direction);
+
                 } else {
                     if (timeSinceLastShot >= cooldown) {
                         StartCoroutine(SphereIndicator(hit.point));
