@@ -7,12 +7,15 @@ public class WanderingAI : MonoBehaviour
 
 
     public float speed = 1.0f;
-    public float obstacleRange = 5.0f;
+    public float detectionRange = 3.0f; // Range within which the enemy detects the player
+
+    public AudioClip[] audioClips;
 
     private bool isAlive;
 
     private Transform player; 
     private UnityEngine.AI.NavMeshAgent agent;
+    private AudioSource audioSource;
 
 
     // Start is called before the first frame update
@@ -22,24 +25,23 @@ public class WanderingAI : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.destination = player.position;
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-        if (isAlive)
-        {
-            // Vector3 direction = player.position - transform.position;
-            // direction.y = 0; // ignore vert distance
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-            // // rotate to player
-            // Quaternion targetRotation = Quaternion.LookRotation(direction);
-            // transform.rotation = targetRotation;
+        if (isAlive) {
+            if (distanceToPlayer <= detectionRange) {
+                if (!audioSource.isPlaying && audioClips.Length > 0)
+                {
+                    int randomIndex = Random.Range(0, audioClips.Length);
+                    audioSource.clip = audioClips[randomIndex];
+                    audioSource.Play();
+                }
+            }
 
-            // // move zambie towards player
-            // transform.Translate(0, 0, speed * Time.deltaTime);
-
-            // replaced the above with a navmesh lol.
             agent.destination = player.position;
 
         }
@@ -63,8 +65,8 @@ public class WanderingAI : MonoBehaviour
         }
     }
 
-
     public void SetAlive(bool alive) {
         isAlive = alive;
     }
 }
+
