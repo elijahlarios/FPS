@@ -158,7 +158,7 @@ MonoBehaviour:
   attackPoint: {fileID: 881372853}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   muzzleFlash: {fileID: 1000010254994808, guid: e2a151176afbed245a34335985a57858, type: 3}
   bulletHoleGraphic: {fileID: 1000010355441670, guid: b6f9d14d093c79340900572e4bef4065, type: 3}
   text: {fileID: 0}
@@ -681,13 +681,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4472623341335337976, guid: 4c53687e6d76bd94a948ef41c9ffdb43, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6184196923309107803, guid: 4c53687e6d76bd94a948ef41c9ffdb43, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2087482049}
+      addedObject: {fileID: 2087482055}
   m_SourcePrefab: {fileID: 100100000, guid: 4c53687e6d76bd94a948ef41c9ffdb43, type: 3}
 --- !u!1 &507671525
 GameObject:
@@ -1294,7 +1295,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e912fbdf1817349e4ba10befb3dbceae, type: 3}
   m_Name: 
@@ -1348,7 +1349,7 @@ MonoBehaviour:
   attackPoint: {fileID: 881372853}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   muzzleFlash: {fileID: 1000010254994808, guid: e2a151176afbed245a34335985a57858, type: 3}
   bulletHoleGraphic: {fileID: 1000010355441670, guid: b6f9d14d093c79340900572e4bef4065, type: 3}
   text: {fileID: 0}
@@ -2900,7 +2901,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6816619126301618401, guid: 4c53687e6d76bd94a948ef41c9ffdb43, type: 3}
   m_PrefabInstance: {fileID: 498700349}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2087482049
+--- !u!114 &2087482055
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

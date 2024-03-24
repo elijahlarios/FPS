@@ -78,6 +78,7 @@ public class WanderingAI : MonoBehaviour
 
     public void SetAlive(bool alive) {
         isAlive = alive;
+
     }
 }
 
