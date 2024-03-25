@@ -43,7 +43,7 @@ public class RayShooter : MonoBehaviour
 
                 } else {
                     if (timeSinceLastShot >= cooldown) {
-                        StartCoroutine(SphereIndicator(hit.point));
+                       // StartCoroutine(SphereIndicator(hit.point));
                         timeSinceLastShot = 0;
 
                     }
