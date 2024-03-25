@@ -70,7 +70,7 @@ public class WanderingAI : MonoBehaviour
 
 
             } else {
-                Debug.Log($"enemy hit a wall ");
+                // Debug.Log($"enemy hit a wall ");
 
             }
         }
