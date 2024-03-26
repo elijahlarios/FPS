@@ -1,4 +1,4 @@
-
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
 
@@ -48,6 +48,11 @@ public class weapons : MonoBehaviour
             bulletsShot = bulletsPerTap;
             Shoot();
         }
+        // just added this here bc its an input function, we can refactor later
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            SceneManager.LoadScene(0);
+        }
+
     }
     private void Shoot(){
         readyToShoot = false;
