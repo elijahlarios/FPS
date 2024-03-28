@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5867289536436976256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7239215388118931737}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7239215388118931737
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5867289536436976256}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0007, y: 0.1922, z: 1.2776}
+  m_LocalScale: {x: 3.333333, y: 3.333333, z: 3.333333}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5957596335851638968}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6135902914568681299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78,6 +109,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 367a2ab42518bbe478aaaff21c57d7d5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 380184317981192827}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 367a2ab42518bbe478aaaff21c57d7d5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7239215388118931737}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 367a2ab42518bbe478aaaff21c57d7d5, type: 3}
       insertIndex: -1
@@ -130,25 +164,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 6477991425168067074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6535acf0b405940a82f2e9e2826871, type: 3}
+  m_Script: {fileID: 11500000, guid: a099f5a861c5fc54c94593a4bc49e98f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
   timeBetweenShooting: 0.5
-  spread: 10
-  range: 50
+  spread: 100
+  range: 100
   reloadTime: 1
   timeBetweenShots: 0.001
-  magazineSize: 600
+  magazineSize: 60
   bulletsPerTap: 6
-  allowButtonHold: 0
+  allowButtonHold: 1
   fpsCam: {fileID: 0}
-  attackPoint: {fileID: 0}
+  attackPoint: {fileID: 7239215388118931737}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
-  muzzleFlash: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
-  bulletHoleGraphic: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
+    m_Bits: 256
+  muzzleFlash: {fileID: 1000010254994808, guid: e2a151176afbed245a34335985a57858, type: 3}
+  bulletHoleGraphic: {fileID: 1000010355441670, guid: b6f9d14d093c79340900572e4bef4065, type: 3}
+  bloodHit: {fileID: 1000012909287652, guid: abb9f519b142e304d9c45b56afa768bc, type: 3}
   text: {fileID: 0}
 --- !u!65 &4055972468181046412
 BoxCollider:

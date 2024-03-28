@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class WanderingAI : MonoBehaviour
@@ -36,26 +38,32 @@ public class WanderingAI : MonoBehaviour
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        if (isAlive) {
-            if (distanceToPlayer <= detectionRange) {
+        if (isAlive)
+        {
+            if (distanceToPlayer <= detectionRange) 
+            {
                 animator.SetTrigger("Z_Attack");
+                
             } else {
                 animator.SetTrigger("Z_Run");
             }
-            if (distanceToPlayer <= audioDetectionRange) {
+            if (distanceToPlayer <= audioDetectionRange)
+            {
                 if (!audioSource.isPlaying && audioClips.Length > 0)
                 {
                     int randomIndex = Random.Range(0, audioClips.Length);
                     audioSource.clip = audioClips[randomIndex];
                     audioSource.Play();
                 }
-            } else if (audioSource.isPlaying) {
+            } else if (audioSource.isPlaying)
+            {
                 audioSource.Pause();
             }
 
             agent.destination = player.position;
 
         }
+       
 
     }
 

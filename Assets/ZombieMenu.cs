@@ -22,14 +22,14 @@ public class ZombieMenu : MonoBehaviour
     private float verticalRot = 0;
     private float horizontalRot = 0;
 
-    private Button lastButtonClicked;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.None; // Unlock the cursor
         Cursor.visible = true; // Make the cursor visible
-        lastButtonClicked = null;
+        
     }
 
     // Update is called once per frame
