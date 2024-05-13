@@ -1,14 +1,13 @@
 ### Scripts
-- [X] Start Menu
-    - [ ] Add Options (hard mode, easy)
-- [X] EnemySpawner
-    - [X] Spawns enemy with cooldown
-- [X] EnemyTracker
-    - [X] Tracks player location
+- [ ] Start Menu
+    - [ ] Options (hard mode, easy)
+- [ ] EnemySpawner
+    - [ ] Spawns enemy with cooldown
+- [ ] EnemyTracker
+    - [ ] Tracks player location
 
 ### Prefabs
 
-- [X] Weapon Design
-- [X] Zombie Design
-- [X] Sound Design (Lower priority)
-- [ ] Get animation working right
+- [ ] Weapon Design
+- [ ] Zombie Design
+- [ ] Sound Design (Lower priority)

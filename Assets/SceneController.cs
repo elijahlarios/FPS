@@ -5,35 +5,102 @@ using TMPro;
 
 public class SceneController : MonoBehaviour
 {
-
     [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject bossPrefab;
+    [SerializeField] private GameObject[] spawnzones;
     private GameObject enemy;
-    public int rounds = 0;
-    public int enemyCount = 5;
+    public GameObject boss;
+    public int startingEnemyCount = 5;
     public TextMeshProUGUI text;
+    public GameObject bossbar;
+    public TextMeshProUGUI warning;
+
+    private int currentRound = 0;
+    private int enemyCount;
+    public bool bossSpawned = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-    
+        StartRound();
+        bossbar.SetActive(false);
+        warning.enabled = false;
 
-    // Update is called once per frame
+    }
     void Update()
     {
+        //Boss spawns after round 3, can be changed for presentation purposes
+        if (currentRound == 2 && !bossSpawned){
+            StartCoroutine(Warning());
+            StartCoroutine(SpawnBoss());
 
-        //SetText
-        text.SetText("ROUND: " + rounds);
-        if (enemy == null) {
-            rounds++;
-            enemyCount = enemyCount + 2;
-            for(int i=0; i < enemyCount; i++){
-                enemy = Instantiate(enemyPrefab) as GameObject;
-                enemy.transform.position = new Vector3(0, 0, 0);
-                // float angle = Random.Range(0, 360);
-                // enemy.transform.Rotate(0, angle, 0);
-            }
-
+            bossSpawned = true;
+           
         }
+    }
+
+    void StartRound()
+    {
+        currentRound++;
+        enemyCount = startingEnemyCount + currentRound - 1;
+        //Spawn enemies across the spawn points
+        for (int i = 0; i < enemyCount; i++)
+        {
+            Vector3 spawnPoint = spawnzones[i % spawnzones.Length].GetComponent<ZombieSpawner>().randomSpawn();
+            enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
+        }
+
+        UpdateUI();
+        StartCoroutine(StartNextRoundAfterDelay(20f)); // Start the next round after a 20-second delay
+    }
+    void BossUI(){
+        bossbar.SetActive(true);
+    }
+
+    void UpdateUI()
+    {
+        text.SetText("ROUND: " + currentRound);
+    }
+
+    IEnumerator StartNextRoundAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // Check if all enemies are defeated before starting the next round
+        while (GameObject.FindGameObjectsWithTag("Zombie").Length > 0)
+        {
+            yield return null; // Wait until all enemies are defeated
+        }
+
+        StartRound(); // Start the next round once all enemies are defeated
+    }
+    IEnumerator SpawnBoss()
+    {
+        yield return new WaitForSeconds(4f);
+        BossUI();
+        Vector3 bossSpawn = new Vector3(45, 2, -31);
+        boss = Instantiate(bossPrefab, bossSpawn, Quaternion.identity);
+        yield break;
+    }
+    IEnumerator Warning()
+    {
+ 
+        float duration = 4f;
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+
+            warning.enabled = !warning.enabled;
+            yield return new WaitForSeconds(0.5f);
+            timer += 0.5f;
+
+             warning.enabled = !warning.enabled;
+            yield return new WaitForSeconds(0.5f);
+            timer += 0.5f;
+        }
+
+        // Ensure the text is visible at the end
+        warning.enabled = false;
     }
 }

@@ -20,7 +20,7 @@ public class weapons : MonoBehaviour
     public LayerMask whatIsEnemy;
 
     //Graphics
-    public GameObject muzzleFlash, bulletHoleGraphic;
+    public GameObject muzzleFlash, bulletHoleGraphic, bloodHit;
    // public CamShake camShake;
    // public float camShakeMagnitude, cameShakeDuration;
     public TextMeshProUGUI text;
@@ -54,28 +54,49 @@ public class weapons : MonoBehaviour
         }
 
     }
-    private void Shoot(){
+    private void Shoot()
+    {
         readyToShoot = false;
-
+        bool isZombie = false;
+        bool isBoss = false;
         //spread
         float x = Random.Range(-spread, spread);
         float y = Random.Range(-spread, spread);
         //Raycast
-        if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out rayHit, range)){
-            Debug.Log(rayHit.collider.name);
-
-
-            //the following is what happens when the ray hits an enemy?
-
-            //if (rayHit.collider.CompareTag("Enemy"))
-             //   rayHit.collider.GetComponent<WanderingAI>().SetAlive(false);
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out rayHit, range))
+        {
+            ReactiveTarget target = rayHit.transform.gameObject.GetComponent<ReactiveTarget>();
+            bossTarget boss = rayHit.transform.gameObject.GetComponent<bossTarget>();
+            if (boss)
+            {
+                isBoss = true;
+                boss.ReactToHit(bossTarget.HitDirection.Backward, damage);
+                Debug.Log("Boss Hit");
+            }
+            else if (target)
+            {
+                isZombie = true;
+                target.ReactToHit(ReactiveTarget.HitDirection.Backward, damage);
+                Debug.Log("Z Hit");
+            }
         }
 
         //ShakeCamera
-       // camShake.Shake(camShakeDuration,camShakeMagnitude);
+        // camShake.Shake(camShakeDuration,camShakeMagnitude);
 
         //Graphics
-        Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.Euler(0,180,0));
+        if (isZombie)
+        {
+            // Blood effect 
+            Instantiate(bloodHit, rayHit.point, rayHit.rigidbody.rotation);
+        }
+        else if (isBoss)
+        {
+            // Blood effect 
+            Instantiate(bloodHit, rayHit.point, rayHit.rigidbody.rotation);
+        }
+        // Bullethole effect
+        else { Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal, Vector3.up)); }
         Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
 
 
@@ -83,8 +104,8 @@ public class weapons : MonoBehaviour
         bulletsShot--;
         Invoke("ResetShot", timeBetweenShooting);
 
-        if(bulletsShot > 0 && bulletsLeft > 0)
-        Invoke("Shoot", timeBetweenShots);
+        if (bulletsShot > 0 && bulletsLeft > 0)
+            Invoke("Shoot", timeBetweenShots);
     }
     private void ResetShot(){
         readyToShoot = true;
@@ -103,9 +124,9 @@ public class weapons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
+   
    
 }

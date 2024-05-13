@@ -9,8 +9,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -1355607822041089838, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
-      propertyPath: detectionRange
+      propertyPath: speed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1355607822041089838, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
+      propertyPath: detectionRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -1178329907713152814, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
+      propertyPath: m_Speed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -1178329907713152814, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
       propertyPath: m_Height

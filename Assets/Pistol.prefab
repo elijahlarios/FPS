@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3591794045904638267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3450241391162592285}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3450241391162592285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3591794045904638267}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0027, y: 0.1385, z: 0.5064}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2561785964020600682}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2596311714395515009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78,6 +109,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6b87b95460eac2d40b200a355f6444a5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 359060128775340256}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6b87b95460eac2d40b200a355f6444a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3450241391162592285}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6b87b95460eac2d40b200a355f6444a5, type: 3}
       insertIndex: -1
@@ -87,7 +121,7 @@ PrefabInstance:
       addedObject: {fileID: 8708027073605060125}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6b87b95460eac2d40b200a355f6444a5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5751303808651762841}
+      addedObject: {fileID: 487772346738908939}
   m_SourcePrefab: {fileID: 100100000, guid: 6b87b95460eac2d40b200a355f6444a5, type: 3}
 --- !u!4 &2561785964020600682 stripped
 Transform:
@@ -142,7 +176,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0941634, y: 0.32351154, z: 0.5751164}
   m_Center: {x: -0.000030353665, y: 0.044764582, z: 0.21778929}
---- !u!114 &5751303808651762841
+--- !u!114 &487772346738908939
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,7 +185,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2938205606067557840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6535acf0b405940a82f2e9e2826871, type: 3}
+  m_Script: {fileID: 11500000, guid: a099f5a861c5fc54c94593a4bc49e98f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
@@ -164,12 +198,13 @@ MonoBehaviour:
   bulletsPerTap: 1
   allowButtonHold: 1
   fpsCam: {fileID: 0}
-  attackPoint: {fileID: 0}
+  attackPoint: {fileID: 3450241391162592285}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
-  muzzleFlash: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
-  bulletHoleGraphic: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
+    m_Bits: 256
+  muzzleFlash: {fileID: 1000010254994808, guid: e2a151176afbed245a34335985a57858, type: 3}
+  bulletHoleGraphic: {fileID: 1000010355441670, guid: b6f9d14d093c79340900572e4bef4065, type: 3}
+  bloodHit: {fileID: 1000012909287652, guid: abb9f519b142e304d9c45b56afa768bc, type: 3}
   text: {fileID: 0}
 --- !u!1001 &4242599100676860931
 PrefabInstance:

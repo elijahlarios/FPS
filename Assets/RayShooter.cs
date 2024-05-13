@@ -39,7 +39,7 @@ public class RayShooter : MonoBehaviour
                 if (target != null) {
                     Vector3 hitDirection = transform.position - hitObject.transform.position;
                     ReactiveTarget.HitDirection direction = Vector3.Dot(hitDirection, transform.forward) > 0 ? ReactiveTarget.HitDirection.Forward : ReactiveTarget.HitDirection.Backward;
-                    target.ReactToHit(direction);
+                    //target.ReactToHit(direction);
 
                 } else {
                     if (timeSinceLastShot >= cooldown) {
