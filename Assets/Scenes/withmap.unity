@@ -27629,7 +27629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5622927970201385030, guid: d93f8e621ed6358448bc635069ab33e0, type: 3}
       propertyPath: startingEnemyCount
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5622927970201385030, guid: d93f8e621ed6358448bc635069ab33e0, type: 3}
       propertyPath: spawnzones.Array.size

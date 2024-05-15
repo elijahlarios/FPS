@@ -44,6 +44,12 @@ public class FPSInput : MonoBehaviour
             audioSource.Stop();
         }
 
+        // Check for quitting the game
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            QuitGame();
+        }
+
         // Set speed based on player input
         float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : speed;
 
@@ -83,5 +89,10 @@ public class FPSInput : MonoBehaviour
             audioSource.pitch = Input.GetKey(KeyCode.LeftShift) ? runningSoundSpeed : walkingSoundSpeed;
             audioSource.Play();
         }
+    }
+    void QuitGame()
+    {
+        // Quit the application
+        Application.Quit();
     }
 }
