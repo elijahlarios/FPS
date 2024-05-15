@@ -8,6 +8,8 @@ public class FPSInput : MonoBehaviour
 
     public float runSpeed = 5.0f;
     public float gravity = -9.8f;
+    public float jumpForce = 5.0f; // Force applied when the player jumps
+
     public AudioClip walkingSound;
     public float walkingSoundSpeed = 1.0f; // Speed of walking sound effect
     public float runningSoundSpeed = 2.0f; // Speed of running sound effect
@@ -15,6 +17,9 @@ public class FPSInput : MonoBehaviour
     private CharacterController charController;
     private AudioSource audioSource;
     private bool isWalking = false;
+    private float verticalVelocity = 0f; // Vertical velocity for jumping and gravity
+    private bool isGrounded = false; // Check if the player is on the ground
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,9 +51,25 @@ public class FPSInput : MonoBehaviour
         float deltaZ = Input.GetAxis("Vertical") * currentSpeed;
 
         Vector3 movement = new Vector3(deltaX, 0, deltaZ);
-
         movement = Vector3.ClampMagnitude(movement, currentSpeed);
-        movement.y = gravity;
+
+        isGrounded = charController.isGrounded;
+        if (isGrounded)
+        {
+            verticalVelocity = gravity * Time.deltaTime; // Apply gravity when grounded
+
+            // Check for jump input
+            if (Input.GetButtonDown("Jump"))
+            {
+                verticalVelocity = jumpForce; // Apply jump force
+            }
+        }
+        else
+        {
+            verticalVelocity += gravity * Time.deltaTime; // Apply gravity when in the air
+        }
+
+        movement.y = verticalVelocity;
         movement *= Time.deltaTime;
         movement = transform.TransformDirection(movement);
         charController.Move(movement);
