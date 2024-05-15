@@ -11,11 +11,11 @@ This is an immersive First-Person Shooter (FPS) game developed for the CSE 4410 
 - **Visual Effects**: Enjoy high-quality visual effects that enhance the gaming experience.
 
 ## Group Members
-Anthony Nelsen (@antman160)
+Anthony Nelsen ([@antman160](https://github.com/antman160))
 
-Aaron Suay (@aaronsuay)
+Aaron Suay ([@aaronsuay](https://github.com/aaronsuay))
 
-Elijah Larios (@elijahlarios)
+Elijah Larios ([@elijahlarios](https://github.com/elijahlarios))
 
 Emmanuel Banuelos
 
