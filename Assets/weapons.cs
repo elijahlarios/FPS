@@ -60,7 +60,12 @@ public class weapons : MonoBehaviour
             bulletsShot = bulletsPerTap;
             PlaySound(shootSound);
             Shoot();
+        } 
+        else if (Input.GetKeyUp(KeyCode.Mouse0) && timeBetweenShooting < 0.4) // AK specific - stop sound after keyup
+        {
+            StopSound();
         }
+
        
 
 
@@ -135,14 +140,27 @@ public class weapons : MonoBehaviour
 
     private void PlaySound(AudioClip clip)
     {
-        if (clip != null && audioSource != null)
+        if (clip != null && audioSource != null )
         {
             // Convert volume level from 0-100 to 0-1
             float volume = volumeLevel / 100f;
             audioSource.volume = volume; // Set volume based on volume level
-            audioSource.PlayOneShot(clip);
+            if (timeBetweenShooting > 0.4) {
+                audioSource.PlayOneShot(clip);
+            } else if (!audioSource.isPlaying) {
+                audioSource.PlayOneShot(clip); // AK specific - avoid overlapping audio
+            }
         }
     }
+
+    private void StopSound()
+    {
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+    }
+
 
 
 
