@@ -161,7 +161,12 @@ public class weapons : MonoBehaviour
         }
     }
 
+    public void IncreaseAmmo(int amount)
+    {
+        magazineSize += amount;
+        text.SetText(bulletsLeft + " / " + magazineSize); 
+        // Debug.Log("Ammo increased. New mag size: " + magazineSize);
 
-
+    }
 
 }

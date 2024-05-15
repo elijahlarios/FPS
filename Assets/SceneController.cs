@@ -22,7 +22,6 @@ public class SceneController : MonoBehaviour
     public bool bossSpawned = false;
     public float ammoSpawnHeight = 0.75f; 
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -119,17 +118,6 @@ public class SceneController : MonoBehaviour
 
         // Ensure the text is visible at the end
         warning.enabled = false;
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            if (other.gameObject.CompareTag("Ammo"))
-            {
-                Destroy(other.gameObject);
-            }
-        }
     }
 
 }

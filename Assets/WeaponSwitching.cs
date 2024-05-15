@@ -46,4 +46,9 @@ public class WeaponSwitching : MonoBehaviour
             i++;
         }
     }
+    public weapons GetSelectedWeapon()
+    {
+        return transform.GetChild(selectedWeapon).GetComponent<weapons>();
+    }
+
 }
