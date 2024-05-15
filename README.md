@@ -12,9 +12,13 @@ This is an immersive First-Person Shooter (FPS) game developed for the CSE 4410 
 
 ## Group Members
 Anthony Nelsen (@antman160)
+
 Aaron Suay (@aaronsuay)
+
 Elijah Larios (@elijahlarios)
+
 Emmanuel Banuelos
+
 Caleb Daguerressar
 
 ## Run the game
