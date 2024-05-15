@@ -9,7 +9,7 @@ public class bossAI : MonoBehaviour
 
 
     public float speed = 1.0f;
-    public float audioDetectionRange = 3.0f; // Range within which the enemy detects the player
+    public float maxVolumeDistance = 10.0f; // Maximum distance at which the audio is audible at full volume
     public float detectionRange = 5.0f;
     public AudioClip[] audioClips;
 
@@ -18,6 +18,7 @@ public class bossAI : MonoBehaviour
     private Transform player; 
     private UnityEngine.AI.NavMeshAgent agent;
     private AudioSource audioSource;
+
     private Animator animator;
 
 
@@ -30,6 +31,7 @@ public class bossAI : MonoBehaviour
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.destination = player.position;
         audioSource = GetComponent<AudioSource>();
+        audioSource.loop = true; // Loop the audio
         animator = GetComponent<Animator>();
 
     }
@@ -49,18 +51,20 @@ public class bossAI : MonoBehaviour
             {
                 animator.SetTrigger("Walking");
             }
-           // if (distanceToPlayer <= audioDetectionRange)
-           // {
-           //     if (!audioSource.isPlaying && audioClips.Length > 0)
-           //     {
-           //         int randomIndex = Random.Range(0, audioClips.Length);
-           //         audioSource.clip = audioClips[randomIndex];
-           //         audioSource.Play();
-           //     }
-           //} else if (audioSource.isPlaying)
-           // {
-           //     audioSource.Pause();
-           // }
+
+            // Adjust audio volume based on distance
+            float volume = Mathf.Clamp01(1.0f - distanceToPlayer / maxVolumeDistance);
+            audioSource.volume = volume;
+
+            // Play audio
+            if (!audioSource.isPlaying && audioClips.Length > 0)
+            {
+                int randomIndex = Random.Range(0, audioClips.Length);
+                audioSource.clip = audioClips[randomIndex];
+                audioSource.Play();
+            }
+
+
 
             agent.destination = player.position;
 

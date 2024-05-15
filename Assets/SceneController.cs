@@ -15,6 +15,7 @@ public class SceneController : MonoBehaviour
     public GameObject bossbar;
     public TextMeshProUGUI warning;
 
+    public int bossSpawnRound = 2; // Round number for boss spawn
     private int currentRound = 0;
     private int enemyCount;
     public bool bossSpawned = false;
@@ -30,7 +31,7 @@ public class SceneController : MonoBehaviour
     void Update()
     {
         //Boss spawns after round 3, can be changed for presentation purposes
-        if (currentRound == 2 && !bossSpawned){
+        if (currentRound == bossSpawnRound && !bossSpawned){
             StartCoroutine(Warning());
             StartCoroutine(SpawnBoss());
 
@@ -78,7 +79,10 @@ public class SceneController : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
         BossUI();
-        Vector3 bossSpawn = new Vector3(45, 2, -31);
+
+        // Randomly select a spawn zone for the boss
+        Vector3 bossSpawn = spawnzones[Random.Range(0, spawnzones.Length)].GetComponent<ZombieSpawner>().randomSpawn();
+
         boss = Instantiate(bossPrefab, bossSpawn, Quaternion.identity);
         yield break;
     }

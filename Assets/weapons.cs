@@ -21,13 +21,25 @@ public class weapons : MonoBehaviour
 
     //Graphics
     public GameObject muzzleFlash, bulletHoleGraphic, bloodHit;
-   // public CamShake camShake;
-   // public float camShakeMagnitude, cameShakeDuration;
+    public AudioClip shootSound, reloadSound; // Audio clips for shooting and reloading
+    // Volume setting for each gun (range from 0 to 1 internally)
+    [Range(0, 100)]
+    public float volumeLevel = 100.0f;
+    private AudioSource audioSource;
+
+    // public CamShake camShake;
+    // public float camShakeMagnitude, cameShakeDuration;
     public TextMeshProUGUI text;
 
     private void Awake(){
         bulletsLeft = magazineSize;
         readyToShoot = true;
+    }
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update(){
@@ -46,12 +58,11 @@ public class weapons : MonoBehaviour
         //shoot
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0){
             bulletsShot = bulletsPerTap;
+            PlaySound(shootSound);
             Shoot();
         }
-        // just added this here bc its an input function, we can refactor later
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            SceneManager.LoadScene(0);
-        }
+       
+
 
     }
     private void Shoot()
@@ -114,6 +125,7 @@ public class weapons : MonoBehaviour
     private void Reload(){
         reloading = true;
         Invoke("ReloadFinished", reloadTime);
+        PlaySound(reloadSound);
 
     }
     private void ReloadFinished(){
@@ -121,12 +133,17 @@ public class weapons : MonoBehaviour
         reloading = false;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void PlaySound(AudioClip clip)
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        if (clip != null && audioSource != null)
+        {
+            // Convert volume level from 0-100 to 0-1
+            float volume = volumeLevel / 100f;
+            audioSource.volume = volume; // Set volume based on volume level
+            audioSource.PlayOneShot(clip);
+        }
     }
 
-   
-   
+
+
 }

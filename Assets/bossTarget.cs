@@ -7,11 +7,16 @@ public class bossTarget : MonoBehaviour
     public int maxHealth = 200;
     public int currentHealth;
     public HealthBar healthBar;
+    public AudioClip hitSound; // Sound to play when hit
+    public float hitSoundDelay = 2.0f; // Delay before playing hit sound again
+    private float lastHitSoundTime; // Last time hit sound was played
     public enum HitDirection {
         Forward,
         Backward
     }
     private Animator animator;
+    private AudioSource audioSource;
+
     void Start() {
         animator = GetComponent<Animator>();
         healthBar = FindObjectOfType<HealthBar>();
@@ -22,10 +27,19 @@ public class bossTarget : MonoBehaviour
         }
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        audioSource = GetComponent<AudioSource>();
+        lastHitSoundTime = -hitSoundDelay; // Ensure the hit sound can be played immediately
     }
     public void ReactToHit(HitDirection hitDirection, int Damage) {
         currentHealth -= Damage;
         healthBar.SetHealth(currentHealth);
+
+        // Play hit sound with delay
+        if (Time.time - lastHitSoundTime > hitSoundDelay && hitSound != null)
+        {
+            audioSource.PlayOneShot(hitSound);
+            lastHitSoundTime = Time.time;
+        }
         // Disable the NavMeshAgent component
         UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         if (agent != null)

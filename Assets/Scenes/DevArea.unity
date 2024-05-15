@@ -372,6 +372,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 387265828}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &405602858 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1170962537879257296, guid: 253330bd58abb8c44af1c8708802106c, type: 3}
+  m_PrefabInstance: {fileID: 817423193}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &454853726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -428,6 +439,30 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 1387074709}
+    - target: {fileID: 5622927970201385030, guid: d93f8e621ed6358448bc635069ab33e0, type: 3}
+      propertyPath: bossbar
+      value: 
+      objectReference: {fileID: 1744881016}
+    - target: {fileID: 5622927970201385030, guid: d93f8e621ed6358448bc635069ab33e0, type: 3}
+      propertyPath: warning
+      value: 
+      objectReference: {fileID: 405602858}
+    - target: {fileID: 5622927970201385030, guid: d93f8e621ed6358448bc635069ab33e0, type: 3}
+      propertyPath: bossPrefab
+      value: 
+      objectReference: {fileID: 7042571683366571404, guid: a22ec414804fd2f4e90390af116ac293, type: 3}
+    - target: {fileID: 5622927970201385030, guid: d93f8e621ed6358448bc635069ab33e0, type: 3}
+      propertyPath: bossSpawned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622927970201385030, guid: d93f8e621ed6358448bc635069ab33e0, type: 3}
+      propertyPath: bossSpawnRound
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622927970201385030, guid: d93f8e621ed6358448bc635069ab33e0, type: 3}
+      propertyPath: startingEnemyCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5622927970201385030, guid: d93f8e621ed6358448bc635069ab33e0, type: 3}
       propertyPath: spawnzones.Array.size
       value: 2
@@ -567,6 +602,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3953876534296820191, guid: 253330bd58abb8c44af1c8708802106c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810890719027398409, guid: 253330bd58abb8c44af1c8708802106c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810890719027398409, guid: 253330bd58abb8c44af1c8708802106c, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7007892886970606432, guid: 253330bd58abb8c44af1c8708802106c, type: 3}
@@ -1234,6 +1277,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4ab0579e2d46264687cb55c8eb114c7, type: 3}
+--- !u!1 &1744881016 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6984252235058137079, guid: 253330bd58abb8c44af1c8708802106c, type: 3}
+  m_PrefabInstance: {fileID: 817423193}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1844082104
 GameObject:
   m_ObjectHideFlags: 0

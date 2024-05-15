@@ -257,6 +257,9 @@ MonoBehaviour:
   muzzleFlash: {fileID: 1000010254994808, guid: e2a151176afbed245a34335985a57858, type: 3}
   bulletHoleGraphic: {fileID: 1000010355441670, guid: b6f9d14d093c79340900572e4bef4065, type: 3}
   bloodHit: {fileID: 1000012909287652, guid: abb9f519b142e304d9c45b56afa768bc, type: 3}
+  shootSound: {fileID: 0}
+  reloadSound: {fileID: 0}
+  volumeLevel: 50
   text: {fileID: 0}
 --- !u!65 &8562471566191075011
 BoxCollider:
