@@ -7,6 +7,7 @@ public class SceneController : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject bossPrefab;
+    [SerializeField] private GameObject ammoPrefab;
     [SerializeField] private GameObject[] spawnzones;
     private GameObject enemy;
     public GameObject boss;
@@ -14,11 +15,13 @@ public class SceneController : MonoBehaviour
     public TextMeshProUGUI text;
     public GameObject bossbar;
     public TextMeshProUGUI warning;
-
+    public int ammoCount = 3;
     public int bossSpawnRound = 2; // Round number for boss spawn
     private int currentRound = 0;
     private int enemyCount;
     public bool bossSpawned = false;
+    public float ammoSpawnHeight = 0.75f; 
+
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +53,16 @@ public class SceneController : MonoBehaviour
             Vector3 spawnPoint = spawnzones[i % spawnzones.Length].GetComponent<ZombieSpawner>().randomSpawn();
             enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
         }
+        for (int i = 0; i < ammoCount; i++)
+        {
+            if (currentRound % 2 == 0) {
+                Vector3 spawnPoint = spawnzones[Random.Range(0, spawnzones.Length)].GetComponent<ZombieSpawner>().randomSpawn();
+                spawnPoint.y += ammoSpawnHeight;
+                Instantiate(ammoPrefab, spawnPoint, Quaternion.identity);
+            }
+        }
+
+
 
         UpdateUI();
         StartCoroutine(StartNextRoundAfterDelay(20f)); // Start the next round after a 20-second delay
@@ -107,4 +120,16 @@ public class SceneController : MonoBehaviour
         // Ensure the text is visible at the end
         warning.enabled = false;
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (other.gameObject.CompareTag("Ammo"))
+            {
+                Destroy(other.gameObject);
+            }
+        }
+    }
+
 }

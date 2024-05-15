@@ -30,5 +30,16 @@ public class PlayerCharacter : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Ammo"))
+        {
+            Destroy(other.gameObject);
+        } else {
+            print("uh oh");
+        }
+    }
+
+
 
 }

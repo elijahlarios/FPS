@@ -13693,6 +13693,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnZone (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7694863169513072541, guid: 2d90750a986d9d24bbcdc61ba1b5b99c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27604,6 +27608,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 87367950}
     - target: {fileID: 5622927970201385030, guid: d93f8e621ed6358448bc635069ab33e0, type: 3}
+      propertyPath: ammoCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622927970201385030, guid: d93f8e621ed6358448bc635069ab33e0, type: 3}
+      propertyPath: ammoPrefab
+      value: 
+      objectReference: {fileID: 2103834800671025014, guid: f88e82acbac8249168837e706805f03f, type: 3}
+    - target: {fileID: 5622927970201385030, guid: d93f8e621ed6358448bc635069ab33e0, type: 3}
       propertyPath: bossPrefab
       value: 
       objectReference: {fileID: 7042571683366571404, guid: a22ec414804fd2f4e90390af116ac293, type: 3}
@@ -27799,7 +27811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7694863169513072541, guid: 2d90750a986d9d24bbcdc61ba1b5b99c, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27866,6 +27878,10 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 1187959851}
+    - target: {fileID: 5351828083942345594, guid: c4ab0579e2d46264687cb55c8eb114c7, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6325328901597081213, guid: c4ab0579e2d46264687cb55c8eb114c7, type: 3}
       propertyPath: text
       value: 
